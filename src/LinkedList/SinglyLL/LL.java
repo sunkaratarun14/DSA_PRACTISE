@@ -62,10 +62,6 @@ public class LL {
         size++;
     }
 
-    public void search(){}
-
-    public void get(int index){}
-
     public int deleteAtFirst(){
         int val= head.val;
         head=head.next;
@@ -76,8 +72,53 @@ public class LL {
         return val;
     }
 
-    public void deleteAtLast(){}
-    public void deleteAtPOS(){}
+    public Node get(int index){
+        Node node =head;
+        for(int i=0;i<index;i++){
+            node=node.next;
+        }
+        return node;
+    }
+
+    public int deleteAtLast(){
+        if (size<=1){
+            deleteAtFirst();
+        }
+        Node secondlast= get(size-2);
+        int val = tail.val;;
+        tail=secondlast;
+        tail.next=null;
+        return val;
+    }
+
+    public int deleteAtPOS(int index){
+        if (index==0){
+            return deleteAtFirst();
+        }
+        if(index==size-1){
+            return deleteAtLast();
+        }
+        Node prev = get(index-1);
+        int val = prev.next.val;
+        prev.next=prev.next.next;
+
+        return val;
+    }
+
+    public int search(int val){
+        int index=0;
+        Node node =head;
+        while(node!=null){
+            if (node.val==val){
+                return index;
+            }
+            index++;
+            node=node.next;
+        }
+//        return node;
+        return -1;
+    }
+
 
     private class Node{
         private int val;
