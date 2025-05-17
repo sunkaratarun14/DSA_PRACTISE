@@ -17,10 +17,11 @@ public class LL {
             System.out.print(temp.val +"->");
             temp=temp.next;
         }
-        System.out.print("end");
+        System.out.println("end");
 
     }
-    public void inserAtFirst(int val){
+
+    public void insertAtFirst(int val){
         if (tail==null){
             tail=head;
         }
@@ -29,19 +30,52 @@ public class LL {
         head=node;
         size++;
     }
+
     public void insertAtLast(int val){
         Node node = new Node(val);
         tail.next=node;
         tail=node;
         if (tail==null){
-            inserAtFirst(val);
+            insertAtFirst(val);
         }
         size++;
-
-
     }
-    public void insertAtPOS(){}
-    public void deleteAtFirst(){}
+
+    public void insertAtPOS(int val,int index){
+        if (index>size || index < 0){
+            return;
+        }
+        if(index==0){
+            insertAtFirst(val);
+            return;
+        }
+        if (index==size){
+            insertAtLast(val);
+            return;
+        }
+        Node temp= head;
+        for (int i=1;i<index;i++){
+            temp=temp.next;
+        }
+        Node node=new Node(val,temp.next);
+        temp.next=node;
+        size++;
+    }
+
+    public void search(){}
+
+    public void get(int index){}
+
+    public int deleteAtFirst(){
+        int val= head.val;
+        head=head.next;
+        if (head==null){
+            tail=null;
+        }
+        size--;
+        return val;
+    }
+
     public void deleteAtLast(){}
     public void deleteAtPOS(){}
 
