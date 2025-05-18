@@ -78,7 +78,9 @@ public class DLL {
         return null;
     }
 
-    public void insertAtindex(){}
+    public void insertAtindex(int val,int index){
+
+    }
 
     public void display(){
         Node node=head;
