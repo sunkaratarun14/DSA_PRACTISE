@@ -48,21 +48,23 @@ public class DLL {
 //        last=node;
 
     }
-    public void inserAfter(int val,int After){
-        Node node= new Node(val);
+
+    public void insertAfter(int val,int After){
         Node prevnode=find(After);
         if (prevnode==null){
             System.out.println("AfterValue not exists !");
             return ;
         }
+        Node node= new Node(val);//created node with val
         node.prev=prevnode;
-        prevnode.next=node;
-        if (node.next ==null){
+        if (prevnode.next ==null){
+            prevnode.next=node;
             node.next=null;
             return;
         }
         node.next=prevnode.next;
         prevnode.next.prev=node;
+        prevnode.next=node;
 
     }
     public Node find(int val){
@@ -75,9 +77,13 @@ public class DLL {
         }
         return null;
     }
+
+    public void insertAtindex(){}
+
     public void display(){
         Node node=head;
         Node last=null;
+        System.out.println();
         while(node != null){
             System.out.print(node.val+" -> ");
             last=node;
